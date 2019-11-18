@@ -7,6 +7,7 @@ describe('managing todos', () => {
     const todoName = 'My First Todo';
 
     await addTodo(todoName);
+    await completeTodo(todoName);
   });
 
   async function addTodo(todoName) {
@@ -15,5 +16,10 @@ describe('managing todos', () => {
 
     await expect(element(by.id('New Todo Name field'))).toHaveText('');
     await expect(element(by.text(todoName))).toBeVisible();
+  }
+
+  async function completeTodo(todoName) {
+    await element(by.id(`Complete todo ${todoName} button`)).tap();
+    await expect(element(by.text(todoName))).toBeNotVisible();
   }
 });

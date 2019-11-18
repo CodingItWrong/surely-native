@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FlatList, SafeAreaView, StatusBar, View} from 'react-native';
+import {FlatList, Keyboard, SafeAreaView, StatusBar, View} from 'react-native';
 import {
   Button,
   Icon,
@@ -16,6 +16,12 @@ const App: () => React$Node = () => {
     console.log({name});
     setTodos([...todos, name]);
     setName('');
+    Keyboard.dismiss();
+  };
+
+  const handleComplete = todoToComplete => {
+    const updatedTodos = todos.filter(todo => todo !== todoToComplete);
+    setTodos(updatedTodos);
   };
 
   return (
@@ -40,7 +46,27 @@ const App: () => React$Node = () => {
         <FlatList
           data={todos}
           keyExtractor={item => item}
-          renderItem={({item}) => <ListItem title={item} bottomDivider />}
+          renderItem={({item}) => (
+            <ListItem
+              bottomDivider
+              title={item}
+              rightElement={
+                <Button
+                  testID={`Complete todo ${item} button`}
+                  buttonStyle={{backgroundColor: 'green'}}
+                  onPress={() => handleComplete(item)}
+                  icon={
+                    <Icon
+                      type="antdesign"
+                      name="check"
+                      size={15}
+                      color="white"
+                    />
+                  }
+                />
+              }
+            />
+          )}
         />
       </SafeAreaView>
     </ThemeProvider>
