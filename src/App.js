@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
-import {
-  Button,
-  FlatList,
-  SafeAreaView,
-  Text,
-  TextInput,
-  StatusBar,
-} from 'react-native';
+import {FlatList, SafeAreaView, StatusBar} from 'react-native';
+import {Button, Input, ListItem, ThemeProvider} from 'react-native-elements';
 
 const App: () => React$Node = () => {
   const [name, setName] = useState('');
@@ -19,10 +13,10 @@ const App: () => React$Node = () => {
   };
 
   return (
-    <>
+    <ThemeProvider>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <TextInput
+        <Input
           testID="New Todo Name field"
           value={name}
           onChangeText={setName}
@@ -31,10 +25,10 @@ const App: () => React$Node = () => {
         <FlatList
           data={todos}
           keyExtractor={item => item}
-          renderItem={({item}) => <Text>{item}</Text>}
+          renderItem={({item}) => <ListItem title={item} bottomDivider />}
         />
       </SafeAreaView>
-    </>
+    </ThemeProvider>
   );
 };
 
