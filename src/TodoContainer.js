@@ -1,17 +1,13 @@
 import React, {useState} from 'react';
-import {FlatList, Keyboard, View} from 'react-native';
-import {Input} from 'react-native-elements';
-import AddButton from './AddButton';
+import {FlatList} from 'react-native';
+import NewTodoForm from './NewTodoForm';
 import TodoListItem from './TodoListItem';
 
 const TodoContainer = () => {
-  const [name, setName] = useState('');
   const [todos, setTodos] = useState([]);
 
-  const handleSave = () => {
-    setTodos([...todos, name]);
-    setName('');
-    Keyboard.dismiss();
+  const handleAdd = newTodo => {
+    setTodos([...todos, newTodo]);
   };
 
   const handleComplete = todoToComplete => {
@@ -26,17 +22,7 @@ const TodoContainer = () => {
 
   return (
     <>
-      <View style={{flexDirection: 'row'}}>
-        <View style={{flex: 1}}>
-          <Input
-            testID="New Todo Name field"
-            placeholder="Add Todo"
-            value={name}
-            onChangeText={setName}
-          />
-        </View>
-        <AddButton testID="Save Todo button" onPress={handleSave} />
-      </View>
+      <NewTodoForm onAdd={handleAdd} />
       <FlatList
         data={todos}
         keyExtractor={item => item}
