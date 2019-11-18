@@ -30,6 +30,14 @@
     "preset": "react-native"
   },
   "detox": {
-    "test-runner": "jest"
+    "test-runner": "jest",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Surely.app",
+        "build": "ENVFILE=.env.detox xcodebuild -workspace ios/Surely.xcworkspace -scheme Surely -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 11"
+      }
+    }
   }
 }

@@ -14,7 +14,7 @@ const App: () => React$Node = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
-        <Text>Hello, World!</Text>
+        <Text testID="welcome">Hello, World!</Text>
       </SafeAreaView>
     </>
   );
