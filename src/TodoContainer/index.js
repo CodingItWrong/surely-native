@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
+import {View} from 'react-native';
 import NewTodoForm from './NewTodoForm';
 import TodoList from './TodoList';
+import styles from '../styles';
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState([]);
@@ -20,14 +22,14 @@ const TodoContainer = () => {
   };
 
   return (
-    <>
+    <View style={styles.fill}>
       <NewTodoForm onAdd={handleAdd} />
       <TodoList
         todos={todos}
         onComplete={handleComplete}
         onDelete={handleDelete}
       />
-    </>
+    </View>
   );
 };
 
