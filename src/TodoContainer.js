@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import {FlatList} from 'react-native';
 import NewTodoForm from './NewTodoForm';
-import TodoListItem from './TodoListItem';
+import TodoList from './TodoList';
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState([]);
@@ -23,16 +22,10 @@ const TodoContainer = () => {
   return (
     <>
       <NewTodoForm onAdd={handleAdd} />
-      <FlatList
-        data={todos}
-        keyExtractor={item => item}
-        renderItem={({item}) => (
-          <TodoListItem
-            item={item}
-            onComplete={handleComplete}
-            onDelete={handleDelete}
-          />
-        )}
+      <TodoList
+        todos={todos}
+        onComplete={handleComplete}
+        onDelete={handleDelete}
       />
     </>
   );
