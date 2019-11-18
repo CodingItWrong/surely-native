@@ -1,9 +1,10 @@
 import React from 'react';
 import {Button, Icon} from 'react-native-elements';
 
-const CompleteButton = ({testID, onPress}) => (
+const CompleteButton = ({style, testID, onPress}) => (
   <Button
     testID={testID}
+    style={style}
     buttonStyle={styles.button}
     onPress={onPress}
     icon={<CompleteIcon />}

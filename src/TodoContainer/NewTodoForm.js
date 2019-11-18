@@ -30,6 +30,8 @@ const NewTodoForm = ({onAdd}) => {
 const styles = {
   formRow: {
     flexDirection: 'row',
+    paddingLeft: 4,
+    paddingRight: 14,
   },
   inputContainer: {
     flex: 1,

@@ -1,9 +1,10 @@
 import React from 'react';
 import {Button, Icon} from 'react-native-elements';
 
-const DeleteButton = ({testID, onPress}) => (
+const DeleteButton = ({style, testID, onPress}) => (
   <Button
     testID={testID}
+    style={style}
     buttonStyle={styles.button}
     onPress={onPress}
     icon={<DeleteIcon />}
