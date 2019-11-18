@@ -5,9 +5,11 @@ describe('managing todos', () => {
 
   it('allows managing todos', async () => {
     const todoName = 'My First Todo';
+    const todoToDelete = 'Todo To Delete';
 
     await addTodo(todoName);
     await completeTodo(todoName);
+    await addAndDeleteTodo(todoToDelete);
   });
 
   async function addTodo(todoName) {
@@ -20,6 +22,13 @@ describe('managing todos', () => {
 
   async function completeTodo(todoName) {
     await element(by.id(`Complete todo ${todoName} button`)).tap();
+    await expect(element(by.text(todoName))).toBeNotVisible();
+  }
+
+  async function addAndDeleteTodo(todoName) {
+    await element(by.id('New Todo Name field')).typeText(todoName);
+    await element(by.id('Save Todo button')).tap();
+    await element(by.id(`Delete todo ${todoName} button`)).tap();
     await expect(element(by.text(todoName))).toBeNotVisible();
   }
 });

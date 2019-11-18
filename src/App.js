@@ -24,6 +24,11 @@ const App: () => React$Node = () => {
     setTodos(updatedTodos);
   };
 
+  const handleDelete = todoToDelete => {
+    const updatedTodos = todos.filter(todo => todo !== todoToDelete);
+    setTodos(updatedTodos);
+  };
+
   return (
     <ThemeProvider>
       <StatusBar barStyle="dark-content" />
@@ -51,19 +56,34 @@ const App: () => React$Node = () => {
               bottomDivider
               title={item}
               rightElement={
-                <Button
-                  testID={`Complete todo ${item} button`}
-                  buttonStyle={{backgroundColor: 'green'}}
-                  onPress={() => handleComplete(item)}
-                  icon={
-                    <Icon
-                      type="antdesign"
-                      name="check"
-                      size={15}
-                      color="white"
-                    />
-                  }
-                />
+                <View style={{flexDirection: 'row'}}>
+                  <Button
+                    testID={`Complete todo ${item} button`}
+                    buttonStyle={{backgroundColor: 'green'}}
+                    onPress={() => handleComplete(item)}
+                    icon={
+                      <Icon
+                        type="antdesign"
+                        name="check"
+                        size={15}
+                        color="white"
+                      />
+                    }
+                  />
+                  <Button
+                    testID={`Delete todo ${item} button`}
+                    buttonStyle={{backgroundColor: 'red'}}
+                    onPress={() => handleDelete(item)}
+                    icon={
+                      <Icon
+                        type="antdesign"
+                        name="close"
+                        size={15}
+                        color="white"
+                      />
+                    }
+                  />
+                </View>
               }
             />
           )}
