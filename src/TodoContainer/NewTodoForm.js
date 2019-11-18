@@ -13,8 +13,8 @@ const NewTodoForm = ({onAdd}) => {
   };
 
   return (
-    <View style={{flexDirection: 'row'}}>
-      <View style={{flex: 1}}>
+    <View style={styles.formRow}>
+      <View style={styles.inputContainer}>
         <Input
           testID="New Todo Name field"
           placeholder="Add Todo"
@@ -25,6 +25,15 @@ const NewTodoForm = ({onAdd}) => {
       <AddButton testID="Save Todo button" onPress={handleSave} />
     </View>
   );
+};
+
+const styles = {
+  formRow: {
+    flexDirection: 'row',
+  },
+  inputContainer: {
+    flex: 1,
+  },
 };
 
 export default NewTodoForm;

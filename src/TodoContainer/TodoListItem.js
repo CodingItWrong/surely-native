@@ -9,7 +9,7 @@ const TodoListItem = ({item, onComplete, onDelete}) => (
     bottomDivider
     title={item}
     rightElement={
-      <View style={{flexDirection: 'row'}}>
+      <View style={styles.buttonGroup}>
         <CompleteButton
           testID={`Complete todo ${item} button`}
           onPress={() => onComplete(item)}
@@ -22,5 +22,11 @@ const TodoListItem = ({item, onComplete, onDelete}) => (
     }
   />
 );
+
+const styles = {
+  buttonGroup: {
+    flexDirection: 'row',
+  },
+};
 
 export default TodoListItem;
