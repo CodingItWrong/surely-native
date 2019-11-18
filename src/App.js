@@ -1,12 +1,9 @@
 import React, {useState} from 'react';
 import {FlatList, Keyboard, SafeAreaView, StatusBar, View} from 'react-native';
-import {
-  Button,
-  Icon,
-  Input,
-  ListItem,
-  ThemeProvider,
-} from 'react-native-elements';
+import {Input, ListItem, ThemeProvider} from 'react-native-elements';
+import AddButton from './AddButton';
+import CompleteButton from './CompleteButton';
+import DeleteButton from './DeleteButton';
 
 const App: () => React$Node = () => {
   const [name, setName] = useState('');
@@ -42,11 +39,7 @@ const App: () => React$Node = () => {
               onChangeText={setName}
             />
           </View>
-          <Button
-            testID="Save Todo button"
-            onPress={handleSave}
-            icon={<Icon type="antdesign" name="plus" size={15} color="white" />}
-          />
+          <AddButton testID="Save Todo button" onPress={handleSave} />
         </View>
         <FlatList
           data={todos}
@@ -57,31 +50,13 @@ const App: () => React$Node = () => {
               title={item}
               rightElement={
                 <View style={{flexDirection: 'row'}}>
-                  <Button
+                  <CompleteButton
                     testID={`Complete todo ${item} button`}
-                    buttonStyle={{backgroundColor: 'green'}}
                     onPress={() => handleComplete(item)}
-                    icon={
-                      <Icon
-                        type="antdesign"
-                        name="check"
-                        size={15}
-                        color="white"
-                      />
-                    }
                   />
-                  <Button
+                  <DeleteButton
                     testID={`Delete todo ${item} button`}
-                    buttonStyle={{backgroundColor: 'red'}}
                     onPress={() => handleDelete(item)}
-                    icon={
-                      <Icon
-                        type="antdesign"
-                        name="close"
-                        size={15}
-                        color="white"
-                      />
-                    }
                   />
                 </View>
               }
