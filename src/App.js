@@ -1,6 +1,12 @@
 import React, {useState} from 'react';
 import {FlatList, SafeAreaView, StatusBar, View} from 'react-native';
-import {Button, Input, ListItem, ThemeProvider} from 'react-native-elements';
+import {
+  Button,
+  Icon,
+  Input,
+  ListItem,
+  ThemeProvider,
+} from 'react-native-elements';
 
 const App: () => React$Node = () => {
   const [name, setName] = useState('');
@@ -20,11 +26,16 @@ const App: () => React$Node = () => {
           <View style={{flex: 1}}>
             <Input
               testID="New Todo Name field"
+              placeholder="Add Todo"
               value={name}
               onChangeText={setName}
             />
           </View>
-          <Button testID="Save Todo button" title="Add" onPress={handleSave} />
+          <Button
+            testID="Save Todo button"
+            onPress={handleSave}
+            icon={<Icon type="antdesign" name="plus" size={15} color="white" />}
+          />
         </View>
         <FlatList
           data={todos}
