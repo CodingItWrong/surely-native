@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {Button, SafeAreaView, Text, TextInput, StatusBar} from 'react-native';
+import {
+  Button,
+  FlatList,
+  SafeAreaView,
+  Text,
+  TextInput,
+  StatusBar,
+} from 'react-native';
 
 const App: () => React$Node = () => {
   const [name, setName] = useState('');
@@ -21,9 +28,11 @@ const App: () => React$Node = () => {
           onChangeText={setName}
         />
         <Button testID="Save Todo button" title="Save" onPress={handleSave} />
-        {todos.map(todo => (
-          <Text key={todo}>{todo}</Text>
-        ))}
+        <FlatList
+          data={todos}
+          keyExtractor={item => item}
+          renderItem={({item}) => <Text>{item}</Text>}
+        />
       </SafeAreaView>
     </>
   );
