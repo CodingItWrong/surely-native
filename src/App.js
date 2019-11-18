@@ -1,22 +1,17 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
-import {SafeAreaView, Text, StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
+import {ThemeProvider} from 'react-native-elements';
+import TodoContainer from './TodoContainer';
+import styles from './styles';
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
-    <>
+    <ThemeProvider>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <Text testID="welcome">Hello, World!</Text>
+      <SafeAreaView style={styles.fill}>
+        <TodoContainer />
       </SafeAreaView>
-    </>
+    </ThemeProvider>
   );
 };
 
