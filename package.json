@@ -10,6 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@orbit/core": "^0.15.23",
+    "@orbit/data": "^0.15.23",
+    "@orbit/store": "^0.15.23",
     "react": "16.9.0",
     "react-native": "0.61.4",
     "react-native-elements": "^1.2.7",
