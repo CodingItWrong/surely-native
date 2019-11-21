@@ -1,25 +1,24 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import NewTodoForm from './NewTodoForm';
 import TodoList from './TodoList';
+import QueryContainer from '../QueryContainer';
 import styles from '../styles';
 
-const TodoContainer = () => {
-  const [todos, setTodos] = useState([]);
+const TodoContainer = ({todos, updateStore}) => {
+  const handleAdd = name =>
+    updateStore(t =>
+      t.addRecord({
+        type: 'todos',
+        attributes: {name},
+      }),
+    );
 
-  const handleAdd = newTodo => {
-    setTodos([...todos, newTodo]);
-  };
+  const handleComplete = todoToComplete =>
+    updateStore(t => t.removeRecord(todoToComplete));
 
-  const handleComplete = todoToComplete => {
-    const updatedTodos = todos.filter(todo => todo !== todoToComplete);
-    setTodos(updatedTodos);
-  };
-
-  const handleDelete = todoToDelete => {
-    const updatedTodos = todos.filter(todo => todo !== todoToDelete);
-    setTodos(updatedTodos);
-  };
+  const handleDelete = todoToDelete =>
+    updateStore(t => t.removeRecord(todoToDelete));
 
   return (
     <View style={styles.fill}>
@@ -33,4 +32,15 @@ const TodoContainer = () => {
   );
 };
 
-export default TodoContainer;
+const ConnectedTodoContainer = () => {
+  return (
+    <QueryContainer
+      query={q => q.findRecords('todos')}
+      render={({records, updateStore}) => (
+        <TodoContainer todos={records} updateStore={updateStore} />
+      )}
+    />
+  );
+};
+
+export default ConnectedTodoContainer;

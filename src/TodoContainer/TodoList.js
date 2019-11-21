@@ -7,7 +7,7 @@ const TodoList = ({todos, onComplete, onDelete}) => (
   <FlatList
     style={styles.fill}
     data={todos}
-    keyExtractor={item => item}
+    keyExtractor={item => item.id}
     renderItem={({item}) => (
       <TodoListItem item={item} onComplete={onComplete} onDelete={onDelete} />
     )}
