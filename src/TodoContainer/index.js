@@ -9,7 +9,7 @@ const TodoContainer = ({todos, updateStore}) => {
   const handleAdd = name =>
     updateStore(t =>
       t.addRecord({
-        type: 'todos',
+        type: 'todo',
         attributes: {name},
       }),
     );
@@ -35,7 +35,7 @@ const TodoContainer = ({todos, updateStore}) => {
 const ConnectedTodoContainer = () => {
   return (
     <QueryContainer
-      query={q => q.findRecords('todos')}
+      query={q => q.findRecords('todo')}
       render={({records, updateStore}) => (
         <TodoContainer todos={records} updateStore={updateStore} />
       )}
