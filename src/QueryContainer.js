@@ -2,22 +2,16 @@ import {useState, useEffect} from 'react';
 import store from './store';
 
 // A render-prop component that runs a query and passes the results to the render prop.
-// Also passes an updateStore function that, when run, will rerun the query.
+// Also passes an updateStore function that, when run, will rerun the query from the cache.
 const QueryContainer = ({query, render}) => {
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
-    store.query(query).then(result => {
-      setRecords(result);
-    });
+    store.query(query);
 
     store.on('transform', t => {
-      console.log({t});
-      // do not rerun when updated records from server
-      if (t.operations.some(o => o.op !== 'updateRecord')) {
-        const result = store.cache.query(query);
-        setRecords(result);
-      }
+      const result = store.cache.query(query);
+      setRecords(result);
     });
   }, [query]);
 
