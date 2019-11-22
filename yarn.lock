@@ -842,6 +842,15 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
+"@orbit/coordinator@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/coordinator/-/coordinator-0.16.3.tgz#b7dcbf45399f836993bf4b26e8c8c3bbae9c39fd"
+  integrity sha512-i4CYRHJGFLDD3KdV3QB9ESVCw+F84CbkqYTrjdjM+E3HbDawGPsWp0jXabZFCQaIt0tBErYsSZ1Y9305wuizZw==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/data" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
+
 "@orbit/core@^0.16.3":
   version "0.16.3"
   resolved "https://registry.yarnpkg.com/@orbit/core/-/core-0.16.3.tgz#e172c28279cf8bd875957cb71317970aaa98aeb2"
@@ -862,6 +871,16 @@
   resolved "https://registry.yarnpkg.com/@orbit/immutable/-/immutable-0.16.3.tgz#b85658ccab4b05fee75772efaa84c67e5114d89b"
   integrity sha512-8osDM0MvNxNcylNiNeWBELTG2F2kfQ3AnKgfEDp1jZmBF5KCdeRYNJZ1b+taaHJhaFQGP+Rxd+D1oPF7ubkb3w==
 
+"@orbit/jsonapi@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/jsonapi/-/jsonapi-0.16.3.tgz#82e4f5bc168a1d4418d7ae20769e868d666a80bf"
+  integrity sha512-O3VY1WwFy1xDdbI72HY+Ofb3VpiRxjYJIk923eul/fww23UnwbVYNkHuxdAXVvj2giELJOxlgOX+QmoxR24IXg==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/data" "^0.16.3"
+    "@orbit/serializers" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
+
 "@orbit/memory@^0.16.3":
   version "0.16.3"
   resolved "https://registry.yarnpkg.com/@orbit/memory/-/memory-0.16.3.tgz#b01ad22e9673e4bf98b3ade178d1a3f7d4688a23"
@@ -881,6 +900,11 @@
     "@orbit/core" "^0.16.3"
     "@orbit/data" "^0.16.3"
     "@orbit/utils" "^0.16.3"
+
+"@orbit/serializers@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/serializers/-/serializers-0.16.3.tgz#fce96a2b0d65f86086c473f1c1d19bfccb9235bd"
+  integrity sha512-PC5KKi76pqT7apCK3SuAkvO7MZX3McaITp2cY1IvFp88NpnqUyRvmkP/OqdeTmMD0v9LUT0m+ZAGHh6eCj9ZnQ==
 
 "@orbit/utils@^0.16.3":
   version "0.16.3"
