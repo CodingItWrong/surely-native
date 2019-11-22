@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Keyboard, View} from 'react-native';
-import {Input} from 'react-native-elements';
+import {TextInput} from 'react-native-paper';
 import AddButton from './AddButton';
 
 const NewTodoForm = ({onAdd}) => {
@@ -15,7 +15,7 @@ const NewTodoForm = ({onAdd}) => {
   return (
     <View style={styles.formRow}>
       <View style={styles.inputContainer}>
-        <Input
+        <TextInput
           testID="New Todo Name field"
           placeholder="Add Todo"
           value={name}

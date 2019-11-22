@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Icon} from 'react-native-elements';
+import {Button} from 'react-native-paper';
 
 const DeleteButton = ({style, testID, onPress}) => (
   <Button
@@ -7,12 +7,10 @@ const DeleteButton = ({style, testID, onPress}) => (
     style={style}
     buttonStyle={styles.button}
     onPress={onPress}
-    icon={<DeleteIcon />}
+    icon="close"
+    mode="contained"
+    color="red"
   />
-);
-
-const DeleteIcon = () => (
-  <Icon type="antdesign" name="close" size={15} color="white" />
 );
 
 const styles = {
