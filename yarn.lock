@@ -842,40 +842,50 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@orbit/core@^0.15.23":
-  version "0.15.23"
-  resolved "https://registry.yarnpkg.com/@orbit/core/-/core-0.15.23.tgz#3f6656f37d6bf9bdf5ef03ae26726cb8ba03776d"
-  integrity sha512-/IDqttFC7eUbyy9NABctYsCrnGIaut4VZfXFQodvd74Rmc1C3+4XbkYmH26zCG/ALQIAhY5odiN9vvzOrHyV0Q==
+"@orbit/core@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/core/-/core-0.16.3.tgz#e172c28279cf8bd875957cb71317970aaa98aeb2"
+  integrity sha512-E4g4twgp8eg6440w3Mjc4+xP+SnyHx2UaDvxLrWx0rV579/jy7zxx98vQxW//lTuU/AXEycKZ3FVzrRDRN/3Cw==
   dependencies:
-    "@orbit/utils" "^0.15.23"
+    "@orbit/utils" "^0.16.3"
 
-"@orbit/data@^0.15.23":
-  version "0.15.23"
-  resolved "https://registry.yarnpkg.com/@orbit/data/-/data-0.15.23.tgz#5b71585d65d4b96b9e79e0feb281f4c957547307"
-  integrity sha512-7ZQt9KYCGWIZLpLQHaOVWyMlU5iddPOEfkesY1We4ob+cbWFv4ZvGHuT0Br4ki1LhoAkh1Zz2dB76NR/WQXOBg==
+"@orbit/data@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/data/-/data-0.16.3.tgz#c4bebb3d3be313538cd3c5630fa7ff7aadff804d"
+  integrity sha512-e3DyYqpULl4W7QGXr3/SvHVb95byQT1P2gcyBLZpFlMawhxIiT2E1qSWAmutkrK7d7NfKEk9xBlnEcMnIlpc6A==
   dependencies:
-    "@orbit/core" "^0.15.23"
-    "@orbit/utils" "^0.15.23"
+    "@orbit/core" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
 
-"@orbit/immutable@^0.15.23":
-  version "0.15.23"
-  resolved "https://registry.yarnpkg.com/@orbit/immutable/-/immutable-0.15.23.tgz#728ad2d3901a1a5db15be62dddce301f0341502e"
-  integrity sha512-NHREGM9U+weyJc1/yyX1l9z0woK6tAm2WJR4XJ3u/mTeed11oe9dEhOWhrJO19NagkiNWlx+htH/URvZtTqPzw==
+"@orbit/immutable@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/immutable/-/immutable-0.16.3.tgz#b85658ccab4b05fee75772efaa84c67e5114d89b"
+  integrity sha512-8osDM0MvNxNcylNiNeWBELTG2F2kfQ3AnKgfEDp1jZmBF5KCdeRYNJZ1b+taaHJhaFQGP+Rxd+D1oPF7ubkb3w==
 
-"@orbit/store@^0.15.23":
-  version "0.15.25"
-  resolved "https://registry.yarnpkg.com/@orbit/store/-/store-0.15.25.tgz#a7dad18ef6fdc0ff515d7654aa6d11928a02a7b9"
-  integrity sha512-CL07LcMp8MrF3iaw6GcU1RnPWeWtUZjTqldh9tJeGgj9PqSJKIxTrAVfXdmBfem8IEee9KdSepTKJbXW0FeOrA==
+"@orbit/memory@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/memory/-/memory-0.16.3.tgz#b01ad22e9673e4bf98b3ade178d1a3f7d4688a23"
+  integrity sha512-WwM0upHxDwUJebajelzU5NywLoSF3llR6Je02hUtMO0mv6VFkk5RM/5IGW+XSxP7HWaASsszzLfeUK7T7ODNRw==
   dependencies:
-    "@orbit/core" "^0.15.23"
-    "@orbit/data" "^0.15.23"
-    "@orbit/immutable" "^0.15.23"
-    "@orbit/utils" "^0.15.23"
+    "@orbit/core" "^0.16.3"
+    "@orbit/data" "^0.16.3"
+    "@orbit/immutable" "^0.16.3"
+    "@orbit/record-cache" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
 
-"@orbit/utils@^0.15.23":
-  version "0.15.23"
-  resolved "https://registry.yarnpkg.com/@orbit/utils/-/utils-0.15.23.tgz#3c3c00414e9a0a8aa3b1907025e30ca31b98e65b"
-  integrity sha512-+7l34ROgaq2SISR6uU4/amz8TjG0HxL7XgGEeuxAinhFzO/vI8/G/kER7Jah885esM+ZmGVLrU5c6ddkHm0H3Q==
+"@orbit/record-cache@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/record-cache/-/record-cache-0.16.3.tgz#fe3c42d96efec3e978e8ef3007b46d84b94f6466"
+  integrity sha512-uc5F9GqhrUo8VGuVfjC1TPnbnp9vpozRGFf0M7iqyFn9Xe7e71dgZZeFjhvoL8+2qyB/2j0yCYR6bcUEGTwMmQ==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/data" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
+
+"@orbit/utils@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/utils/-/utils-0.16.3.tgz#fa94700191360c4c49fc9fdf464994cfe817dd0b"
+  integrity sha512-JSF9xVRUEWugGtcR9mFOCzsMLphWMh/8xAe0FOuEpyyBFxBlWLuovatg/cwvlHo7AJh3J5StiiJXmBecTk/m6A==
 
 "@react-native-community/cli-debugger-ui@^3.0.0":
   version "3.0.0"
