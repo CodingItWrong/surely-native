@@ -4,10 +4,11 @@ import NewTodoForm from './NewTodoForm';
 import TodoList from './TodoList';
 import QueryContainer from '../QueryContainer';
 import styles from '../styles';
+import store from '../store';
 
-const TodoContainer = ({todos, updateStore}) => {
+const TodoContainer = ({todos}) => {
   const handleAdd = name =>
-    updateStore(t =>
+    store.update(t =>
       t.addRecord({
         type: 'todo',
         attributes: {name},
@@ -15,10 +16,10 @@ const TodoContainer = ({todos, updateStore}) => {
     );
 
   const handleComplete = todoToComplete =>
-    updateStore(t => t.removeRecord(todoToComplete));
+    store.update(t => t.removeRecord(todoToComplete));
 
   const handleDelete = todoToDelete =>
-    updateStore(t => t.removeRecord(todoToDelete));
+    store.update(t => t.removeRecord(todoToDelete));
 
   return (
     <View style={styles.fill}>
@@ -34,10 +35,9 @@ const TodoContainer = ({todos, updateStore}) => {
 
 const ConnectedTodoContainer = () => (
   <QueryContainer
+    store={store}
     query={q => q.findRecords('todo')}
-    render={({records, updateStore}) => (
-      <TodoContainer todos={records} updateStore={updateStore} />
-    )}
+    render={({records}) => <TodoContainer todos={records} />}
   />
 );
 
