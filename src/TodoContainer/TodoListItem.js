@@ -1,16 +1,15 @@
 import React from 'react';
 import {View} from 'react-native';
-import {ListItem} from 'react-native-elements';
+import {List} from 'react-native-paper';
 import CompleteButton from './CompleteButton';
 import DeleteButton from './DeleteButton';
 
 const TodoListItem = ({item, onComplete, onDelete}) => {
   const {name} = item.attributes;
   return (
-    <ListItem
-      bottomDivider
+    <List.Item
       title={name}
-      rightElement={
+      right={() => (
         <View style={styles.buttonGroup}>
           <CompleteButton
             style={styles.button}
@@ -23,7 +22,7 @@ const TodoListItem = ({item, onComplete, onDelete}) => {
             onPress={() => onDelete(item)}
           />
         </View>
-      }
+      )}
     />
   );
 };
