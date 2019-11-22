@@ -14,7 +14,13 @@ const QueryContainer = ({query, render}) => {
     };
 
     updateQueryRecords();
-    store.on('transform', updateQueryRecords);
+    store.on('transform', t => {
+      console.log({t});
+      // do not rerun when updated records from server
+      if (t.operations.some(o => o.op !== 'updateRecord')) {
+        updateQueryRecords();
+      }
+    });
   }, [query]);
 
   const updateStore = (...args) => store.update(...args);
