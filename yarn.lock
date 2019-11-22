@@ -842,6 +842,41 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
+"@orbit/core@^0.15.23":
+  version "0.15.23"
+  resolved "https://registry.yarnpkg.com/@orbit/core/-/core-0.15.23.tgz#3f6656f37d6bf9bdf5ef03ae26726cb8ba03776d"
+  integrity sha512-/IDqttFC7eUbyy9NABctYsCrnGIaut4VZfXFQodvd74Rmc1C3+4XbkYmH26zCG/ALQIAhY5odiN9vvzOrHyV0Q==
+  dependencies:
+    "@orbit/utils" "^0.15.23"
+
+"@orbit/data@^0.15.23":
+  version "0.15.23"
+  resolved "https://registry.yarnpkg.com/@orbit/data/-/data-0.15.23.tgz#5b71585d65d4b96b9e79e0feb281f4c957547307"
+  integrity sha512-7ZQt9KYCGWIZLpLQHaOVWyMlU5iddPOEfkesY1We4ob+cbWFv4ZvGHuT0Br4ki1LhoAkh1Zz2dB76NR/WQXOBg==
+  dependencies:
+    "@orbit/core" "^0.15.23"
+    "@orbit/utils" "^0.15.23"
+
+"@orbit/immutable@^0.15.23":
+  version "0.15.23"
+  resolved "https://registry.yarnpkg.com/@orbit/immutable/-/immutable-0.15.23.tgz#728ad2d3901a1a5db15be62dddce301f0341502e"
+  integrity sha512-NHREGM9U+weyJc1/yyX1l9z0woK6tAm2WJR4XJ3u/mTeed11oe9dEhOWhrJO19NagkiNWlx+htH/URvZtTqPzw==
+
+"@orbit/store@^0.15.23":
+  version "0.15.25"
+  resolved "https://registry.yarnpkg.com/@orbit/store/-/store-0.15.25.tgz#a7dad18ef6fdc0ff515d7654aa6d11928a02a7b9"
+  integrity sha512-CL07LcMp8MrF3iaw6GcU1RnPWeWtUZjTqldh9tJeGgj9PqSJKIxTrAVfXdmBfem8IEee9KdSepTKJbXW0FeOrA==
+  dependencies:
+    "@orbit/core" "^0.15.23"
+    "@orbit/data" "^0.15.23"
+    "@orbit/immutable" "^0.15.23"
+    "@orbit/utils" "^0.15.23"
+
+"@orbit/utils@^0.15.23":
+  version "0.15.23"
+  resolved "https://registry.yarnpkg.com/@orbit/utils/-/utils-0.15.23.tgz#3c3c00414e9a0a8aa3b1907025e30ca31b98e65b"
+  integrity sha512-+7l34ROgaq2SISR6uU4/amz8TjG0HxL7XgGEeuxAinhFzO/vI8/G/kER7Jah885esM+ZmGVLrU5c6ddkHm0H3Q==
+
 "@react-native-community/cli-debugger-ui@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-3.0.0.tgz#d01d08d1e5ddc1633d82c7d84d48fff07bd39416"
