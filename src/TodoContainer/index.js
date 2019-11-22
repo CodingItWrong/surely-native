@@ -32,15 +32,13 @@ const TodoContainer = ({todos, updateStore}) => {
   );
 };
 
-const ConnectedTodoContainer = () => {
-  return (
-    <QueryContainer
-      query={q => q.findRecords('todo')}
-      render={({records, updateStore}) => (
-        <TodoContainer todos={records} updateStore={updateStore} />
-      )}
-    />
-  );
-};
+const ConnectedTodoContainer = () => (
+  <QueryContainer
+    query={q => q.findRecords('todo')}
+    render={({records, updateStore}) => (
+      <TodoContainer todos={records} updateStore={updateStore} />
+    )}
+  />
+);
 
 export default ConnectedTodoContainer;

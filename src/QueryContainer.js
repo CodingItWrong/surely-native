@@ -7,18 +7,16 @@ const QueryContainer = ({query, render}) => {
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
-    const updateQueryRecords = () => {
-      store.query(query).then(result => {
-        setRecords(result);
-      });
-    };
+    store.query(query).then(result => {
+      setRecords(result);
+    });
 
-    updateQueryRecords();
     store.on('transform', t => {
       console.log({t});
       // do not rerun when updated records from server
       if (t.operations.some(o => o.op !== 'updateRecord')) {
-        updateQueryRecords();
+        const result = store.cache.query(query);
+        setRecords(result);
       }
     });
   }, [query]);
