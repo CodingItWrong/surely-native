@@ -4,21 +4,22 @@ import NewTodoForm from './NewTodoForm';
 import TodoList from './TodoList';
 import QueryContainer from '../QueryContainer';
 import styles from '../styles';
+import store from '../store';
 
-const TodoContainer = ({todos, updateStore}) => {
+const TodoContainer = ({todos}) => {
   const handleAdd = name =>
-    updateStore(t =>
+    store.update(t =>
       t.addRecord({
-        type: 'todos',
+        type: 'todo',
         attributes: {name},
       }),
     );
 
   const handleComplete = todoToComplete =>
-    updateStore(t => t.removeRecord(todoToComplete));
+    store.update(t => t.removeRecord(todoToComplete));
 
   const handleDelete = todoToDelete =>
-    updateStore(t => t.removeRecord(todoToDelete));
+    store.update(t => t.removeRecord(todoToDelete));
 
   return (
     <View style={styles.fill}>
@@ -32,15 +33,12 @@ const TodoContainer = ({todos, updateStore}) => {
   );
 };
 
-const ConnectedTodoContainer = () => {
-  return (
-    <QueryContainer
-      query={q => q.findRecords('todos')}
-      render={({records, updateStore}) => (
-        <TodoContainer todos={records} updateStore={updateStore} />
-      )}
-    />
-  );
-};
+const ConnectedTodoContainer = () => (
+  <QueryContainer
+    store={store}
+    query={q => q.findRecords('todo')}
+    render={({records}) => <TodoContainer todos={records} />}
+  />
+);
 
 export default ConnectedTodoContainer;
