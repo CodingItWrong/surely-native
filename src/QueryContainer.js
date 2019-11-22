@@ -6,12 +6,12 @@ const QueryContainer = ({store, query, render}) => {
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
-    store.query(query);
-
     store.on('transform', t => {
       const result = store.cache.query(query);
       setRecords(result);
     });
+
+    store.query(query);
   }, [store, query]);
 
   return render({records});
