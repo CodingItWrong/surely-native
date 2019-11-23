@@ -7,6 +7,7 @@ import schema from './schema';
 
 const memory = new MemorySource({schema});
 
+console.log('REMOTE_DATA', env.REMOTE_DATA);
 if (env.REMOTE_DATA === 'true') {
   const remote = new JSONAPISource({
     schema,
