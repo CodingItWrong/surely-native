@@ -17,6 +17,7 @@
     "@orbit/memory": "^0.16.3",
     "react": "16.9.0",
     "react-native": "0.61.4",
+    "react-native-config": "^0.12.0",
     "react-native-paper": "^3.2.1",
     "react-native-vector-icons": "^6.6.0"
   },
@@ -43,7 +44,7 @@
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Surely.app",
         "build": "ENVFILE=.env.detox xcodebuild -workspace ios/Surely.xcworkspace -scheme Surely -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
-        "name": "iPhone 11"
+        "name": "iPhone 8"
       }
     }
   }
