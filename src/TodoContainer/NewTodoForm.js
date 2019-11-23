@@ -22,7 +22,9 @@ const NewTodoForm = ({onAdd}) => {
           onChangeText={setName}
         />
       </View>
-      <AddButton testID="Save Todo button" onPress={handleSave} />
+      <View>
+        <AddButton testID="Save Todo button" onPress={handleSave} />
+      </View>
     </View>
   );
 };
