@@ -1,7 +1,11 @@
 import env from 'react-native-config';
 import MemorySource from '@orbit/memory';
 import JSONAPISource from '@orbit/jsonapi';
-import Coordinator, {RequestStrategy, SyncStrategy} from '@orbit/coordinator';
+import Coordinator, {
+  RequestStrategy,
+  SyncStrategy,
+  EventLoggingStrategy,
+} from '@orbit/coordinator';
 
 import schema from './schema';
 
@@ -49,6 +53,9 @@ if (env.REMOTE_DATA === 'true') {
       blocking: false,
     }),
   );
+
+  // log events to console
+  coordinator.addStrategy(new EventLoggingStrategy());
 
   coordinator
     .activate()
