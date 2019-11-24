@@ -33,6 +33,9 @@ jobs:
       # run tests!
       - run: yarn test
 
+      # run eslint
+      - run: yarn lint
+
       # collect reports
       - store_test_results:
           path: /tmp/test-results
