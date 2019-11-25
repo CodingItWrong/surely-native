@@ -36,6 +36,7 @@ const TodoContainer = ({todos}) => {
 const ConnectedTodoContainer = () => (
   <QueryContainer
     store={store}
+    storeReady={() => Promise.resolve()}
     query={q => q.findRecords('todo')}
     render={({records}) => <TodoContainer todos={records} />}
   />
