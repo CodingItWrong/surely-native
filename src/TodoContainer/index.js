@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import NewTodoForm from './NewTodoForm';
 import TodoList from './TodoList';
-import {useOrbitQuery} from '../QueryContainer';
+import useOrbitQuery from '../useOrbitQuery';
 import styles from '../styles';
 import store from '../store';
 
