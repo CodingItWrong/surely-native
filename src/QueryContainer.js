@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-const useOrbitQuery = ({storeReady, store, query}) => {
+export const useOrbitQuery = ({storeReady, store, query}) => {
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
