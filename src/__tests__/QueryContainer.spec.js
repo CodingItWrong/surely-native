@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {render, act} from 'react-native-testing-library';
-import QueryContainer, {useOrbitQuery} from '../QueryContainer';
+import {useOrbitQuery} from '../QueryContainer';
 
 describe('QueryContainer', () => {
   const TestQueryContainer = ({

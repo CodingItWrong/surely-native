@@ -14,11 +14,3 @@ export const useOrbitQuery = ({storeReady, store, query}) => {
 
   return records;
 };
-
-const QueryContainer = ({storeReady, store, query, render}) => {
-  const records = useOrbitQuery({storeReady, store, query});
-
-  return render({records});
-};
-
-export default QueryContainer;
