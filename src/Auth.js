@@ -1,8 +1,9 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 import axios from 'axios';
 import {Button, TextInput} from 'react-native-paper';
 import {OAuth} from '@codingitwrong/react-login';
+import styles from './styles';
 
 const httpClient = axios.create({
   baseURL: 'http://localhost:3000',
@@ -13,7 +14,7 @@ const Auth = ({children}) => (
     initiallyLoggedIn={false}
     httpClient={httpClient}
     renderForm={renderForm}
-    renderLoggedIn={() => <>{children}</>}
+    renderLoggedIn={({logOut}) => renderLoggedIn({children, logOut})}
     handleAccessToken={token => console.log({token})}
   />
 );
@@ -43,5 +44,12 @@ const renderForm = ({username, password, error, handleChange, handleLogIn}) => {
     </>
   );
 };
+
+const renderLoggedIn = ({children, logOut}) => (
+  <View style={styles.fill}>
+    {children}
+    <Button onPress={logOut}>Sign Out</Button>
+  </View>
+);
 
 export default Auth;
