@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-const QueryContainer = ({storeReady, store, query, render}) => {
+const useOrbitQuery = ({storeReady, store, query}) => {
   const [records, setRecords] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const QueryContainer = ({storeReady, store, query, render}) => {
     });
   }, [storeReady, store, query]);
 
-  return render({records});
+  return records;
 };
 
-export default QueryContainer;
+export default useOrbitQuery;

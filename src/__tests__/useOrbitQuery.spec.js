@@ -1,9 +1,20 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {render, act} from 'react-native-testing-library';
-import QueryContainer from '../QueryContainer';
+import useOrbitQuery from '../useOrbitQuery';
 
-describe('QueryContainer', () => {
+describe('useOrbitQuery', () => {
+  const TestQueryContainer = ({
+    storeReady,
+    store,
+    query,
+    render: renderProp,
+  }) => {
+    const records = useOrbitQuery({storeReady, store, query});
+
+    return renderProp({records});
+  };
+
   const storeRecords = [{foo: 'bar'}];
 
   let renderProp;
@@ -42,7 +53,7 @@ describe('QueryContainer', () => {
     };
 
     ({queryByText} = render(
-      <QueryContainer
+      <TestQueryContainer
         storeReady={storeReady}
         store={store}
         query={userQuery}
