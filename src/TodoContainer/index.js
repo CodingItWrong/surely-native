@@ -33,10 +33,10 @@ const TodoContainer = ({todos}) => {
   );
 };
 
-const ConnectedTodoContainer = () => {
-  const storeReady = () => Promise.resolve();
-  const query = q => q.findRecords('todo');
+const query = q => q.findRecords('todo');
+const storeReady = () => Promise.resolve();
 
+const ConnectedTodoContainer = () => {
   const records = useOrbitQuery({store, storeReady, query});
 
   return <TodoContainer todos={records} />;

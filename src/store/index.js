@@ -76,14 +76,12 @@ export const loadToken = () => {
   }
 
   return AsyncStorage.getItem(tokenStorageKey).then(token => {
-    console.log({token});
     setAuthHeader(token);
     return token;
   });
 };
 
 export const setToken = token => {
-  console.log('setToken', {token});
   setAuthHeader(token);
 
   if (!persistLogin) {
@@ -94,7 +92,6 @@ export const setToken = token => {
 };
 
 export const clearToken = () => {
-  console.log('clearToken');
   setAuthHeader(null);
 
   if (!persistLogin) {
