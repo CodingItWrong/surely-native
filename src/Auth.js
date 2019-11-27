@@ -70,7 +70,7 @@ const renderForm = ({username, password, error, handleChange, handleLogIn}) => {
         onChangeText={handleChange('password')}
         secureTextEntry={true}
       />
-      <Button mode="contained" onPress={handleLogIn}>
+      <Button testID="Sign In button" mode="contained" onPress={handleLogIn}>
         Sign In
       </Button>
     </>
