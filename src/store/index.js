@@ -9,7 +9,7 @@ import Coordinator, {
 import AsyncStorage from '@react-native-community/async-storage';
 
 const persistLogin = env.PERSIST_LOGIN === 'true';
-const tokenStorageKey = 'bible-reading:token';
+const tokenStorageKey = 'surely:token';
 
 import schema from './schema';
 
