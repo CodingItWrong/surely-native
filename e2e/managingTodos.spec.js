@@ -7,10 +7,17 @@ describe('managing todos', () => {
     const todoName = 'My First Todo';
     const todoToDelete = 'Todo To Delete';
 
+    await logIn();
     await addTodo(todoName);
     await completeTodo(todoName);
     await addAndDeleteTodo(todoToDelete);
   });
+
+  async function logIn() {
+    await element(by.id('Email field')).typeText('example@example.com');
+    await element(by.id('Password field')).typeText('password');
+    await element(by.id('Sign In button')).tap();
+  }
 
   async function addTodo(todoName) {
     await element(by.id('New Todo Name field')).typeText(todoName);
