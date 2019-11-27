@@ -7,6 +7,7 @@ import Coordinator, {
   EventLoggingStrategy,
 } from '@orbit/coordinator';
 import AsyncStorage from '@react-native-community/async-storage';
+import {baseURL} from '../urls';
 
 const persistLogin = env.PERSIST_LOGIN === 'true';
 const tokenStorageKey = 'surely:token';
@@ -21,7 +22,7 @@ if (env.REMOTE_DATA === 'true') {
   remote = new JSONAPISource({
     schema,
     name: 'remote',
-    host: 'http://localhost:3000',
+    host: baseURL,
   });
 
   const coordinator = new Coordinator({
