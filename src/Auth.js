@@ -2,13 +2,28 @@ import React, {useState, useEffect} from 'react';
 import {Text, View} from 'react-native';
 import axios from 'axios';
 import {Button, TextInput} from 'react-native-paper';
+import env from 'react-native-config';
 import {OAuth} from '@codingitwrong/react-login';
 import styles from './styles';
 import {loadToken, setToken, clearToken} from './store';
 
-const httpClient = axios.create({
-  baseURL: 'http://localhost:3000',
-});
+const remoteData = env.REMOTE_DATA;
+
+let httpClient;
+if (remoteData) {
+  httpClient = axios.create({
+    baseURL: 'http://localhost:3000',
+  });
+} else {
+  httpClient = {
+    post: () =>
+      Promise.resolve({
+        data: {
+          access_token: 'fake_access_token',
+        },
+      }),
+  };
+}
 
 const Auth = ({children}) => {
   const [loading, setLoading] = useState(true);

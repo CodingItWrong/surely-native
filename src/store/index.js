@@ -8,12 +8,13 @@ import Coordinator, {
 } from '@orbit/coordinator';
 import AsyncStorage from '@react-native-community/async-storage';
 
+const persistLogin = env.PERSIST_LOGIN === 'true';
 const tokenStorageKey = 'bible-reading:token';
 
 import schema from './schema';
 
 const memory = new MemorySource({schema});
-let remote = {}; // so headers don't fail
+let remote = {requestProcessor: {defaultFetchSettings: {headers: {}}}}; // so headers don't fail
 
 console.log('REMOTE_DATA', env.REMOTE_DATA);
 if (env.REMOTE_DATA === 'true') {
@@ -70,7 +71,10 @@ if (env.REMOTE_DATA === 'true') {
 }
 
 export const loadToken = () => {
-  console.log('loadToken');
+  if (!persistLogin) {
+    return Promise.resolve(null);
+  }
+
   return AsyncStorage.getItem(tokenStorageKey).then(token => {
     console.log({token});
     setAuthHeader(token);
@@ -82,12 +86,20 @@ export const setToken = token => {
   console.log('setToken', {token});
   setAuthHeader(token);
 
+  if (!persistLogin) {
+    return Promise.resolve();
+  }
+
   return AsyncStorage.setItem(tokenStorageKey, token);
 };
 
 export const clearToken = () => {
   console.log('clearToken');
   setAuthHeader(null);
+
+  if (!persistLogin) {
+    return Promise.resolve();
+  }
 
   return AsyncStorage.removeItem(tokenStorageKey);
 };
