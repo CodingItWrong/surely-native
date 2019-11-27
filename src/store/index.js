@@ -13,10 +13,11 @@ const tokenStorageKey = 'bible-reading:token';
 import schema from './schema';
 
 const memory = new MemorySource({schema});
+let remote = {}; // so headers don't fail
 
 console.log('REMOTE_DATA', env.REMOTE_DATA);
 if (env.REMOTE_DATA === 'true') {
-  const remote = new JSONAPISource({
+  remote = new JSONAPISource({
     schema,
     name: 'remote',
     host: 'http://localhost:3000',
@@ -92,11 +93,11 @@ export const clearToken = () => {
 };
 
 const setAuthHeader = token => {
-  // if (token) {
-  //   api.defaults.headers.Authorization = `Bearer ${token}`;
-  // } else {
-  //   delete api.defaults.headers.Authorization;
-  // }
+  if (token) {
+    remote.requestProcessor.defaultFetchSettings.headers.Authorization = `Bearer ${token}`;
+  } else {
+    delete remote.requestProcessor.defaultFetchSettings.headers.Authorization;
+  }
 };
 
 export default memory;
