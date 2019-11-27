@@ -32,7 +32,7 @@
     "detox": "^14.8.0",
     "eslint": "^6.7.1",
     "eslint-plugin-detox": "^1.0.0",
-    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-jest": "^23.0.5",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.57.0",
     "react-native-testing-library": "^1.11.1",
