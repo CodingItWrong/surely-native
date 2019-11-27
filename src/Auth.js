@@ -6,14 +6,13 @@ import env from 'react-native-config';
 import {OAuth} from '@codingitwrong/react-login';
 import styles from './styles';
 import {loadToken, setToken, clearToken} from './store';
+import {baseURL} from './urls';
 
 const remoteData = env.REMOTE_DATA;
 
 let httpClient;
 if (remoteData) {
-  httpClient = axios.create({
-    baseURL: 'http://localhost:3000',
-  });
+  httpClient = axios.create({baseURL});
 } else {
   httpClient = {
     post: () =>
