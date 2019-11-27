@@ -6,6 +6,9 @@ import Coordinator, {
   SyncStrategy,
   EventLoggingStrategy,
 } from '@orbit/coordinator';
+import AsyncStorage from '@react-native-community/async-storage';
+
+const tokenStorageKey = 'bible-reading:token';
 
 import schema from './schema';
 
@@ -64,5 +67,36 @@ if (env.REMOTE_DATA === 'true') {
     })
     .catch(console.error);
 }
+
+export const loadToken = () => {
+  console.log('loadToken');
+  return AsyncStorage.getItem(tokenStorageKey).then(token => {
+    console.log({token});
+    setAuthHeader(token);
+    return token;
+  });
+};
+
+export const setToken = token => {
+  console.log('setToken', {token});
+  setAuthHeader(token);
+
+  return AsyncStorage.setItem(tokenStorageKey, token);
+};
+
+export const clearToken = () => {
+  console.log('clearToken');
+  setAuthHeader(null);
+
+  return AsyncStorage.removeItem(tokenStorageKey);
+};
+
+const setAuthHeader = token => {
+  // if (token) {
+  //   api.defaults.headers.Authorization = `Bearer ${token}`;
+  // } else {
+  //   delete api.defaults.headers.Authorization;
+  // }
+};
 
 export default memory;
