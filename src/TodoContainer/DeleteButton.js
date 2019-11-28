@@ -6,7 +6,7 @@ const DeleteButton = ({style, testID, onPress}) => (
     testID={testID}
     style={style}
     onPress={onPress}
-    icon="close"
+    icon="trash-can-outline"
     size={20}
     color="red"
   />
