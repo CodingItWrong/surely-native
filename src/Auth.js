@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 import axios from 'axios';
 import {Button, TextInput} from 'react-native-paper';
 import env from 'react-native-config';
 import {OAuth} from '@codingitwrong/react-login';
-import styles from './styles';
 import {loadToken, setToken, clearToken} from './store';
 import {baseURL} from './urls';
 
@@ -24,7 +23,7 @@ if (remoteData) {
   };
 }
 
-const Auth = ({children}) => {
+const Auth = ({render}) => {
   const [loading, setLoading] = useState(true);
   const [initiallyLoggedIn, setInitiallyLoggedIn] = useState(false);
 
@@ -44,7 +43,7 @@ const Auth = ({children}) => {
       initiallyLoggedIn={initiallyLoggedIn}
       httpClient={httpClient}
       renderForm={renderForm}
-      renderLoggedIn={({logOut}) => renderLoggedIn({children, logOut})}
+      renderLoggedIn={({logOut}) => render({logOut: handleLogOut(logOut)})}
       handleAccessToken={setToken}
     />
   );
@@ -75,13 +74,6 @@ const renderForm = ({username, password, error, handleChange, handleLogIn}) => {
     </>
   );
 };
-
-const renderLoggedIn = ({children, logOut}) => (
-  <View style={styles.fill}>
-    {children}
-    <Button onPress={handleLogOut(logOut)}>Sign Out</Button>
-  </View>
-);
 
 const handleLogOut = logOut => () =>
   clearToken()

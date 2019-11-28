@@ -1,22 +1,15 @@
 import React from 'react';
-import {Button} from 'react-native-paper';
+import {IconButton} from 'react-native-paper';
 
 const CompleteButton = ({style, testID, onPress}) => (
-  <Button
+  <IconButton
     testID={testID}
     style={style}
-    buttonStyle={styles.button}
     onPress={onPress}
     icon="check"
-    mode="contained"
+    size={20}
     color="green"
   />
 );
-
-const styles = {
-  button: {
-    backgroundColor: 'green',
-  },
-};
 
 export default CompleteButton;
