@@ -4,11 +4,12 @@ import {Provider as PaperProvider} from 'react-native-paper';
 import Auth from './Auth';
 import AppBar from './AppBar';
 import TodoContainer from './TodoContainer';
+import theme from './theme';
 import styles from './styles';
 
 const App = () => {
   return (
-    <PaperProvider>
+    <PaperProvider theme={theme}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.fill}>
         <Auth
