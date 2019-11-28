@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button} from 'react-native-paper';
+import {IconButton} from 'react-native-paper';
 
 const AddButton = ({testID, onPress}) => (
-  <Button testID={testID} onPress={onPress} icon="plus" mode="contained" />
+  <IconButton testID={testID} onPress={onPress} icon="plus" size={20} />
 );
 
 export default AddButton;
