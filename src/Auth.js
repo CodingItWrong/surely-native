@@ -8,7 +8,7 @@ import styles from './styles';
 import {loadToken, setToken, clearToken} from './store';
 import {baseURL} from './urls';
 
-const remoteData = env.REMOTE_DATA;
+const remoteData = env.REMOTE_DATA === 'true';
 
 let httpClient;
 if (remoteData) {
