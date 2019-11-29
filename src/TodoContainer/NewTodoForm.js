@@ -7,9 +7,11 @@ const NewTodoForm = ({onAdd}) => {
   const [name, setName] = useState('');
 
   const handleSave = () => {
-    onAdd(name);
-    setName('');
-    Keyboard.dismiss();
+    if (name) {
+      onAdd(name);
+      setName('');
+      Keyboard.dismiss();
+    }
   };
 
   return (
