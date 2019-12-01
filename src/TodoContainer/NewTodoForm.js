@@ -22,6 +22,7 @@ const NewTodoForm = ({onAdd}) => {
           placeholder="Add Todo"
           value={name}
           onChangeText={setName}
+          onSubmitEditing={handleSave}
         />
       </View>
       <View>
