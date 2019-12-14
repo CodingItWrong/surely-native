@@ -33,7 +33,7 @@ const TodoContainer = ({todos}) => {
   );
 };
 
-const query = q => q.findRecords('todo');
+const query = q => q.findRecords('todo').sort('name');
 const storeReady = () => Promise.resolve();
 
 const ConnectedTodoContainer = () => {
