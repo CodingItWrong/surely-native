@@ -8,27 +8,36 @@ import TodoScreen from './screens/TodoScreen';
 import theme from './theme';
 import styles from './styles';
 
-const MyDrawerNavigator = createDrawerNavigator(
-  {
-    TodoScreen,
-  },
-  {
-    contentComponent: () => (
-      <>
-        <Drawer.Item label="Log Out" />
-      </>
-    ),
-  },
-);
+const DrawerNav = ({logOut}) => {
+  const MyDrawerNavigator = createDrawerNavigator(
+    {
+      TodoScreen,
+    },
+    {
+      contentComponent: () => (
+        <>
+          <Drawer.Item
+            label="Log Out"
+            onPress={() => {
+              console.log('logging out', logOut);
+              // logOut();
+            }}
+          />
+        </>
+      ),
+    },
+  );
 
-const MyApp = createAppContainer(MyDrawerNavigator);
+  const AppContainer = createAppContainer(MyDrawerNavigator);
+  return <AppContainer />;
+};
 
 const App = () => {
   return (
     <PaperProvider theme={theme}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.fill}>
-        <Auth render={({logOut}) => <MyApp />} />
+        <Auth render={({logOut}) => <DrawerNav logOut={logOut} />} />
       </SafeAreaView>
     </PaperProvider>
   );
