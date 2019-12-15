@@ -19,11 +19,7 @@ const TodoContainer = ({todos, render}) => {
   const handleDelete = todoToDelete =>
     store.update(t => t.removeRecord(todoToDelete));
 
-  return (
-    <View style={styles.fill}>
-      {render({todos, handleAdd, handleComplete, handleDelete})}
-    </View>
-  );
+  return render({todos, handleAdd, handleComplete, handleDelete});
 };
 
 const query = q => q.findRecords('todo').sort('name');
