@@ -7,11 +7,11 @@ import TodoList from './TodoList';
 import styles from '../../styles';
 
 const TodoScreen = ({navigation}) => (
-  <>
-    <AppBar navigation={navigation} />
-    <TodoContainer
-      render={({todos, handleAdd, handleComplete, handleDelete}) => {
-        return (
+  <TodoContainer
+    render={({todos, handleAdd, handleComplete, handleDelete}) => {
+      return (
+        <>
+          <AppBar navigation={navigation} />
           <View style={styles.fill}>
             <NewTodoForm onAdd={handleAdd} />
             <TodoList
@@ -20,10 +20,10 @@ const TodoScreen = ({navigation}) => (
               onDelete={handleDelete}
             />
           </View>
-        );
-      }}
-    />
-  </>
+        </>
+      );
+    }}
+  />
 );
 
 export default TodoScreen;
