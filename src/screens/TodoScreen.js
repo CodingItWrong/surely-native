@@ -2,9 +2,9 @@ import React from 'react';
 import AppBar from '../AppBar';
 import TodoContainer from '../TodoContainer';
 
-const TodoScreen = ({logOut}) => (
+const TodoScreen = ({navigation}) => (
   <>
-    <AppBar logOut={logOut} />
+    <AppBar navigation={navigation} />
     <TodoContainer />
   </>
 );
