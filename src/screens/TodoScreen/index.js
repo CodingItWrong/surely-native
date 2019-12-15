@@ -8,10 +8,16 @@ import styles from '../../styles';
 
 const TodoScreen = ({navigation}) => (
   <TodoContainer
-    render={({todos, handleAdd, handleComplete, handleDelete}) => {
+    render={({
+      todos,
+      handleRefresh,
+      handleAdd,
+      handleComplete,
+      handleDelete,
+    }) => {
       return (
         <>
-          <AppBar navigation={navigation} />
+          <AppBar navigation={navigation} refresh={handleRefresh} />
           <View style={styles.fill}>
             <NewTodoForm onAdd={handleAdd} />
             <TodoList
