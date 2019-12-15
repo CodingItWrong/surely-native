@@ -6,7 +6,7 @@ import useOrbitQuery from '../useOrbitQuery';
 import styles from '../styles';
 import store from '../store';
 
-const TodoContainer = ({todos}) => {
+const TodoContainer = ({todos, render}) => {
   const handleAdd = name =>
     store.update(t =>
       t.addRecord({
@@ -23,12 +23,7 @@ const TodoContainer = ({todos}) => {
 
   return (
     <View style={styles.fill}>
-      <NewTodoForm onAdd={handleAdd} />
-      <TodoList
-        todos={todos}
-        onComplete={handleComplete}
-        onDelete={handleDelete}
-      />
+      {render({todos, handleAdd, handleComplete, handleDelete})}
     </View>
   );
 };
@@ -36,10 +31,10 @@ const TodoContainer = ({todos}) => {
 const query = q => q.findRecords('todo').sort('name');
 const storeReady = () => Promise.resolve();
 
-const ConnectedTodoContainer = () => {
+const ConnectedTodoContainer = ({render}) => {
   const records = useOrbitQuery({store, storeReady, query});
 
-  return <TodoContainer todos={records} />;
+  return <TodoContainer todos={records} render={render} />;
 };
 
 export default ConnectedTodoContainer;
