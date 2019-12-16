@@ -1,12 +1,15 @@
 import {useState, useEffect, useCallback} from 'react';
 
+const removeCachedRecordsForQuery = ({store, query}) => {
+  const records = store.cache.query(query);
+  store.cache.patch(t => records.map(r => t.removeRecord(r)));
+};
+
 const useOrbitQuery = ({storeReady, store, query}) => {
   const [records, setRecords] = useState([]);
 
   const refresh = useCallback(() => {
-    // this is model specific and needs to be removed
-    const allRecords = store.cache.query(q => q.findRecords('todo'));
-    store.cache.patch(t => allRecords.map(r => t.removeRecord(r)));
+    removeCachedRecordsForQuery({store, query});
     store.query(query);
   }, [store, query]);
 
