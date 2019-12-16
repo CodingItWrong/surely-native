@@ -18,7 +18,7 @@ const useOrbitQuery = ({storeReady, store, query}) => {
       store.on('transform', () => {
         setRecords(store.cache.query(query));
       });
-      refresh();
+      store.query(query);
     });
   }, [storeReady, store, query, refresh]);
 
