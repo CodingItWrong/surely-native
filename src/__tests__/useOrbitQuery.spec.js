@@ -10,7 +10,7 @@ describe('useOrbitQuery', () => {
     query,
     render: renderProp,
   }) => {
-    const records = useOrbitQuery({storeReady, store, query});
+    const [records] = useOrbitQuery({storeReady, store, query});
 
     return renderProp({records});
   };

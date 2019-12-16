@@ -1,12 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
-import NewTodoForm from './NewTodoForm';
-import TodoList from './TodoList';
 import useOrbitQuery from '../useOrbitQuery';
-import styles from '../styles';
 import store from '../store';
 
-const TodoContainer = ({todos}) => {
+const TodoContainer = ({todos, refresh, render}) => {
+  const handleRefresh = refresh;
+
   const handleAdd = name =>
     store.update(t =>
       t.addRecord({
@@ -21,25 +19,22 @@ const TodoContainer = ({todos}) => {
   const handleDelete = todoToDelete =>
     store.update(t => t.removeRecord(todoToDelete));
 
-  return (
-    <View style={styles.fill}>
-      <NewTodoForm onAdd={handleAdd} />
-      <TodoList
-        todos={todos}
-        onComplete={handleComplete}
-        onDelete={handleDelete}
-      />
-    </View>
-  );
+  return render({
+    todos,
+    handleRefresh,
+    handleAdd,
+    handleComplete,
+    handleDelete,
+  });
 };
 
 const query = q => q.findRecords('todo').sort('name');
 const storeReady = () => Promise.resolve();
 
-const ConnectedTodoContainer = () => {
-  const records = useOrbitQuery({store, storeReady, query});
+const ConnectedTodoContainer = ({render}) => {
+  const [records, refresh] = useOrbitQuery({store, storeReady, query});
 
-  return <TodoContainer todos={records} />;
+  return <TodoContainer todos={records} refresh={refresh} render={render} />;
 };
 
 export default ConnectedTodoContainer;
