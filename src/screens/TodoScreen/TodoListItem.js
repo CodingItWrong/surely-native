@@ -10,6 +10,7 @@ const TodoListItem = ({item, onComplete, onDelete}) => {
     <>
       <List.Item
         title={name}
+        titleNumberOfLines={3}
         right={() => (
           <View style={styles.buttonGroup}>
             <CompleteButton
