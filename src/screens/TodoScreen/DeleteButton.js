@@ -1,13 +1,14 @@
 import React from 'react';
 import {IconButton} from 'react-native-paper';
+import styles from '../../styles';
 
 const DeleteButton = ({style, testID, onPress}) => (
   <IconButton
     testID={testID}
-    style={style}
     onPress={onPress}
     icon="trash-can-outline"
-    size={20}
+    size={24}
+    style={{...styles.iconButton, ...style}}
     color="red"
   />
 );
