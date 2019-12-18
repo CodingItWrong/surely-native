@@ -13,14 +13,34 @@ const TodoContainer = ({todos, refresh, render}) => {
       }),
     );
 
-  const handleComplete = todoToComplete =>
-    store.update(t => t.removeRecord(todoToComplete));
+  const handleComplete = todo =>
+    store.update(t =>
+      t.updateRecord({
+        ...todo,
+        attributes: {
+          ...todo.attributes,
+          completedAt: new Date(),
+        },
+      }),
+    );
 
-  const handleDelete = todoToDelete =>
-    store.update(t => t.removeRecord(todoToDelete));
+  const handleDelete = todo =>
+    store.update(t =>
+      t.updateRecord({
+        ...todo,
+        attributes: {
+          ...todo.attributes,
+          deletedAt: new Date(),
+        },
+      }),
+    );
+
+  const activeTodos = todos.filter(
+    ({attributes}) => !attributes.completedAt && !attributes.deletedAt,
+  );
 
   return render({
-    todos,
+    todos: activeTodos,
     handleRefresh,
     handleAdd,
     handleComplete,
