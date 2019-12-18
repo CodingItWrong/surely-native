@@ -1,15 +1,9 @@
 import {useState, useEffect, useCallback} from 'react';
 
-const removeCachedRecordsForQuery = ({store, query}) => {
-  const records = store.cache.query(query);
-  store.cache.patch(t => records.map(r => t.removeRecord(r)));
-};
-
 const useOrbitQuery = ({storeReady, store, query}) => {
   const [records, setRecords] = useState([]);
 
   const refresh = useCallback(() => {
-    removeCachedRecordsForQuery({store, query});
     store.query(query);
   }, [store, query]);
 
