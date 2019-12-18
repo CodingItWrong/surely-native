@@ -5,6 +5,7 @@ import Coordinator, {
   RequestStrategy,
   SyncStrategy,
   EventLoggingStrategy,
+  LogTruncationStrategy,
 } from '@orbit/coordinator';
 import AsyncStorage from '@react-native-community/async-storage';
 import {baseURL} from '../urls';
@@ -62,6 +63,13 @@ if (env.REMOTE_DATA === 'true') {
 
   // log events to console
   coordinator.addStrategy(new EventLoggingStrategy());
+
+  // truncate transform logs
+  coordinator.addStrategy(
+    new LogTruncationStrategy({
+      sources: ['memory', 'remote'],
+    }),
+  );
 
   coordinator
     .activate()
