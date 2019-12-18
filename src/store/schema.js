@@ -5,6 +5,9 @@ const schema = new Schema({
     todo: {
       attributes: {
         name: {type: 'string'},
+        createdAt: {type: 'date-time'},
+        completedAt: {type: 'date-time'},
+        deletedAt: {type: 'date-time'},
       },
     },
   },
