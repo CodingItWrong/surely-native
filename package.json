@@ -14,7 +14,7 @@
     "@orbit/coordinator": "^0.16.3",
     "@orbit/core": "^0.16.3",
     "@orbit/data": "^0.16.3",
-    "@orbit/jsonapi": "^0.16.3",
+    "@orbit/jsonapi": "^0.16.4",
     "@orbit/memory": "^0.16.3",
     "@react-native-community/async-storage": "^1.7.1",
     "axios": "^0.19.0",
