@@ -1,10 +1,9 @@
 import PouchDB from 'pouchdb-react-native';
 import {persistData} from './flags';
+import {couchUrl} from './urls';
 
 let db = null;
 let remoteDb = null;
-
-const remoteHost = 'localhost:5984';
 
 export const checkAuth = ({username, password}) => {
   if (!persistData) {
@@ -12,7 +11,7 @@ export const checkAuth = ({username, password}) => {
   }
 
   const dbName = `surely-todos-${username}`;
-  const tempDb = new PouchDB(`http://${remoteHost}/${dbName}`, {
+  const tempDb = new PouchDB(`${couchUrl}/${dbName}`, {
     auth: {username, password},
   });
 
@@ -23,7 +22,7 @@ export const connect = ({username, password}) => {
   const dbName = `surely-todos-${username}`;
   db = new PouchDB(dbName);
   if (persistData) {
-    remoteDb = new PouchDB(`http://${remoteHost}/${dbName}`, {
+    remoteDb = new PouchDB(`${couchUrl}/${dbName}`, {
       auth: {username, password},
     });
   } else {
