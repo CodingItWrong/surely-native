@@ -5,7 +5,7 @@ import CompleteButton from './CompleteButton';
 import DeleteButton from './DeleteButton';
 
 const TodoListItem = ({item, onComplete, onDelete}) => {
-  const {name} = item.attributes;
+  const {name} = item;
   return (
     <>
       <List.Item

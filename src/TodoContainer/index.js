@@ -1,60 +1,60 @@
-import React from 'react';
-import useOrbitQuery from '../useOrbitQuery';
-import store from '../store';
+import {useState, useCallback, useEffect} from 'react';
+import uuid from 'uuid/v4';
+import {getDb, getRemoteDb} from '../db';
 
-const TodoContainer = ({todos, refresh, render}) => {
-  const handleRefresh = refresh;
+const currentTimestamp = () => new Date().getTime();
 
-  const handleAdd = name =>
-    store.update(t =>
-      t.addRecord({
-        type: 'todo',
-        attributes: {name},
-      }),
-    );
+const TodoContainer = ({render}) => {
+  const [todos, setTodos] = useState([]);
 
-  const handleComplete = todo =>
-    store.update(t =>
-      t.updateRecord({
-        ...todo,
-        attributes: {
-          ...todo.attributes,
-          completedAt: new Date(),
-        },
-      }),
-    );
-
-  const handleDelete = todo =>
-    store.update(t =>
-      t.updateRecord({
-        ...todo,
-        attributes: {
-          ...todo.attributes,
-          deletedAt: new Date(),
-        },
-      }),
-    );
-
-  const activeTodos = todos.filter(
-    ({attributes}) => !attributes.completedAt && !attributes.deletedAt,
+  const updateDocs = useCallback(
+    () =>
+      getDb()
+        .allDocs({include_docs: true})
+        .then(result => result.rows.map(r => r.doc))
+        .then(allTodos =>
+          allTodos.filter(todo => !todo.completedAt && !todo.deletedAt),
+        )
+        .then(setTodos),
+    [],
   );
 
+  useEffect(() => {
+    updateDocs();
+
+    const remoteDb = getRemoteDb();
+    if (remoteDb) {
+      const syncHandler = getDb()
+        .sync(getRemoteDb(), {live: true, retry: true})
+        .on('change', updateDocs)
+        .on('error', err => {
+          console.error('sync error', err);
+        });
+      return () => syncHandler.cancel();
+    }
+  }, [updateDocs]);
+
+  const handleAdd = name =>
+    getDb()
+      .put({_id: uuid(), name})
+      .then(updateDocs);
+
+  const handleComplete = todo =>
+    getDb()
+      .put({...todo, completedAt: currentTimestamp()})
+      .then(updateDocs);
+
+  const handleDelete = todo =>
+    getDb()
+      .put({...todo, deletedAt: currentTimestamp()})
+      .then(updateDocs);
+
   return render({
-    todos: activeTodos,
-    handleRefresh,
+    todos,
     handleAdd,
     handleComplete,
     handleDelete,
   });
 };
 
-const query = q => q.findRecords('todo').sort('name');
-const storeReady = () => Promise.resolve();
-
-const ConnectedTodoContainer = ({render}) => {
-  const [records, refresh] = useOrbitQuery({store, storeReady, query});
-
-  return <TodoContainer todos={records} refresh={refresh} render={render} />;
-};
-
-export default ConnectedTodoContainer;
+export default TodoContainer;

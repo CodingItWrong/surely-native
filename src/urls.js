@@ -1,7 +1,8 @@
 const urlsByEnvironment = {
-  development: 'http://localhost:3000',
-  production: 'https://api.surely.codingitwrong.com',
+  development: 'http://localhost:5984',
+  // development: 'https://couchdb.codingitwrong.com',
+  production: 'https://couchdb.codingitwrong.com',
 };
 
 const environment = __DEV__ ? 'development' : 'production';
-export const baseURL = urlsByEnvironment[environment];
+export const couchUrl = urlsByEnvironment[environment];

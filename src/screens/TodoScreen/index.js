@@ -17,7 +17,7 @@ const TodoScreen = ({navigation}) => (
     }) => {
       return (
         <>
-          <AppBar navigation={navigation} refresh={handleRefresh} />
+          <AppBar navigation={navigation} />
           <View style={styles.fill}>
             <NewTodoForm onAdd={handleAdd} />
             <TodoList
