@@ -21,15 +21,15 @@ export const checkAuth = ({username, password}) => {
 
 export const connect = ({username, password}) => {
   const dbName = `surely-todos-${username}`;
+  db = new PouchDB(dbName);
   if (persistData) {
-    db = new PouchDB(dbName);
     remoteDb = new PouchDB(`http://${remoteHost}/${dbName}`, {
       auth: {username, password},
     });
-    // } else {
-    //   PouchDB.plugin(memoryAdapter);
-    //   db = new PouchDB(dbName, {adapter: 'memory'});
-    // remoteDb = null;
+  } else {
+    db.destroy();
+    db = new PouchDB(dbName);
+    remoteDb = null;
   }
 };
 

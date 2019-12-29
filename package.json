@@ -14,7 +14,6 @@
     "@react-native-community/async-storage": "^1.7.1",
     "axios": "^0.19.0",
     "lodash": "^4.17.15",
-    "pouchdb-adapter-memory": "^7.1.1",
     "pouchdb-react-native": "^6.4.1",
     "react": "16.9.0",
     "react-native": "0.61.4",
