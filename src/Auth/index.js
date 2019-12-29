@@ -5,9 +5,14 @@ import {checkAuth} from '../db';
 import {loadAuth, setAuth, clearAuth} from '../authStorage';
 
 const attemptLogin = ({username, password}) => {
-  return checkAuth({username, password}).then(() => {
-    setAuth({username, password});
-  });
+  return checkAuth({username, password})
+    .then(() => {
+      setAuth({username, password});
+    })
+    .catch(err => {
+      console.log('auth error', err);
+      throw err.reason;
+    });
 };
 
 const MyAuth = ({render}) => {
