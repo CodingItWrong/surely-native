@@ -35,7 +35,8 @@ describe('managing todos', () => {
   async function addAndDeleteTodo(todoName) {
     await element(by.id('New Todo Name field')).typeText(todoName);
     await element(by.id('Save Todo button')).tap();
-    await element(by.id(`Delete todo ${todoName} button`)).tap();
+    await element(by.id(`Todo ${todoName}`)).tap();
+    await element(by.id('Delete todo button')).tap();
     await expect(element(by.text(todoName))).toBeNotVisible();
   }
 });

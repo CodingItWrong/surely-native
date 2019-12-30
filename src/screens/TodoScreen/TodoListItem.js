@@ -1,43 +1,26 @@
 import React from 'react';
-import {View} from 'react-native';
 import {Divider, List} from 'react-native-paper';
 import CompleteButton from './CompleteButton';
-import DeleteButton from './DeleteButton';
 
-const TodoListItem = ({item, onComplete, onDelete}) => {
+const TodoListItem = ({item, onSelect, onComplete}) => {
   const {name} = item;
   return (
     <>
       <List.Item
+        testID={`Todo ${name}`}
         title={name}
         titleNumberOfLines={3}
+        onPress={() => onSelect(item)}
         right={() => (
-          <View style={styles.buttonGroup}>
-            <CompleteButton
-              style={styles.button}
-              testID={`Complete todo ${name} button`}
-              onPress={() => onComplete(item)}
-            />
-            <DeleteButton
-              style={styles.button}
-              testID={`Delete todo ${name} button`}
-              onPress={() => onDelete(item)}
-            />
-          </View>
+          <CompleteButton
+            testID={`Complete todo ${name} button`}
+            onPress={() => onComplete(item)}
+          />
         )}
       />
       <Divider />
     </>
   );
-};
-
-const styles = {
-  buttonGroup: {
-    flexDirection: 'row',
-  },
-  button: {
-    marginLeft: 10,
-  },
 };
 
 export default TodoListItem;

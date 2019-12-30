@@ -6,13 +6,13 @@ import styles from '../../styles';
 
 const sortByName = todos => sortBy(todos, [t => t.name.toLowerCase()]);
 
-const TodoList = ({todos, onComplete, onDelete}) => (
+const TodoList = ({todos, onSelect, onComplete}) => (
   <FlatList
     style={styles.fill}
     data={sortByName(todos)}
     keyExtractor={item => item._id}
     renderItem={({item}) => (
-      <TodoListItem item={item} onComplete={onComplete} onDelete={onDelete} />
+      <TodoListItem item={item} onSelect={onSelect} onComplete={onComplete} />
     )}
   />
 );
