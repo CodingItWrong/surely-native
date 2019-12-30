@@ -46,7 +46,7 @@ const TodoContainer = ({render}) => {
 
   const handleDelete = todo =>
     getDb()
-      .put({...todo, deletedAt: currentTimestamp()})
+      .remove(todo)
       .then(updateDocs);
 
   return render({
