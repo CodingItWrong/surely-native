@@ -5,14 +5,18 @@ import AppBar from '../../AppBar';
 import useTodos from '../../useTodos';
 import NewTodoForm from './NewTodoForm';
 import TodoList from './TodoList';
+import TodoDetailModal from './TodoDetailModal';
 import styles from '../../styles';
 
 const TodoScreen = ({navigation}) => {
-  const [todoModalVisible, setTodoModalVisible] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState(null);
   const {todos, handleAdd, handleComplete, handleDelete} = useTodos();
 
-  const showModal = () => setTodoModalVisible(true);
-  const hideModal = () => setTodoModalVisible(false);
+  const selectTodo = todo => setSelectedTodo(todo);
+  const deselectTodo = () => setSelectedTodo(null);
+  const deleteTodo = todo => {
+    handleDelete(todo).then(deselectTodo);
+  };
 
   return (
     <>
@@ -21,14 +25,15 @@ const TodoScreen = ({navigation}) => {
         <NewTodoForm onAdd={handleAdd} />
         <TodoList
           todos={todos}
-          onShowModal={showModal}
+          onSelect={selectTodo}
           onComplete={handleComplete}
-          onDelete={handleDelete}
         />
       </View>
-      <Modal visible={todoModalVisible} onDismiss={hideModal}>
-        <Text>Modal</Text>
-      </Modal>
+      <TodoDetailModal
+        todo={selectedTodo}
+        onDismiss={deselectTodo}
+        onDelete={deleteTodo}
+      />
     </>
   );
 };
