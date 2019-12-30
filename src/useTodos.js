@@ -1,10 +1,10 @@
 import {useState, useCallback, useEffect} from 'react';
 import uuid from 'uuid/v4';
-import {getDb, getRemoteDb} from '../db';
+import {getDb, getRemoteDb} from './db';
 
 const currentTimestamp = () => new Date().getTime();
 
-const TodoContainer = ({render}) => {
+const useTodos = () => {
   const [todos, setTodos] = useState([]);
 
   const updateDocs = useCallback(
@@ -49,12 +49,12 @@ const TodoContainer = ({render}) => {
       .remove(todo)
       .then(updateDocs);
 
-  return render({
+  return {
     todos,
     handleAdd,
     handleComplete,
     handleDelete,
-  });
+  };
 };
 
-export default TodoContainer;
+export default useTodos;
