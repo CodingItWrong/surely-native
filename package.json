@@ -50,7 +50,17 @@
         "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Surely.app",
         "build": "ENVFILE=.env.detox xcodebuild -workspace ios/Surely.xcworkspace -scheme Surely -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
-        "name": "iPhone 8"
+        "device": {
+          "type": "iPhone 11 Pro"
+        }
+      },
+      "ios.sim.release": {
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/Surely.app",
+        "build": "xcodebuild -workspace ios/Surely.xcworkspace -scheme Surely -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "device": {
+          "type": "iPhone 11 Pro"
+        }
       }
     }
   }
