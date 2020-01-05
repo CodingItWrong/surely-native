@@ -1,5 +1,8 @@
-name: Detox
-on: [push]
+name: Test
+on:
+  push:
+    branches-ignore:
+      - master
 
 jobs:
   build:
